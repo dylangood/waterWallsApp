@@ -9,9 +9,14 @@ router.get('/', function(req, res) {
   res.send('/client/index.html');
 });
 
-router.get('/api/test', function(req, res) {
+router.get('/api/test1', function(req, res) {
   var targeted = Services.fillEpisodeWithAds(test.episode, test.campaigns);
   res.send(targeted);
+});
+
+router.get('/api/test2', function(req, res) {
+  var largestTroughStats = Services.largestTrough(test.checklist[0].input);
+  res.send(largestTroughStats);
 });
 
 router.post('/api/episodes', function(req, res) {

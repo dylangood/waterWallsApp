@@ -18,7 +18,7 @@ module.exports = {
     for (let i = 2; i < heights.length; i++) {
       if (heights[i] >= heights[leftWall]) {
         rightWall = i;
-        let capacity = measureTrough(heights.slice(leftWall, rightWall + 1));
+        let capacity = this.measureTrough(heights.slice(leftWall, rightWall + 1));
         if (capacity && (!troughData || capacity > troughData[2])) {
           troughData = [1 + leftWall, 1 + rightWall, capacity];
         }
@@ -38,8 +38,8 @@ module.exports = {
     let west = heights.slice(0, peak + 1);
     let east = heights.slice(peak).reverse();
     
-    let westBest = findTroughs(west);
-    let eastBest = findTroughs(east);
+    let westBest = this.findTroughs(west);
+    let eastBest = this.findTroughs(east);
     if (eastBest) {
       eastBest = [heights.length - eastBest[1] + 1, heights.length - eastBest[0] + 1, eastBest[2]];
     }
