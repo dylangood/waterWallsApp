@@ -4,7 +4,8 @@
   "description": "Starter code for developing with React.js",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,10 @@
     "url": "https://github.com/kyle-wilson/react-webpack-starter/issues"
   },
   "homepage": "https://github.com/kyle-wilson/webpack-dev-server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
