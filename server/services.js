@@ -10,6 +10,13 @@ module.exports = {
     }
     return waterVolume;
   },
+
+  fillTrough: function addWaterToWaterWallsTrough(section) {
+    let waterLevel = Math.min(section[0], section[section.length - 1]);
+    return section.map( wallHeight => {
+      return { blocks: wallHeight, water: Math.min(0, waterLevel - wallHeight) };
+    });
+  },
   
   findTroughs: function findTroughsClimbingTowardsPeak(heights) {
     let troughData = false;
