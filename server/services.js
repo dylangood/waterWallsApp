@@ -14,10 +14,28 @@ module.exports = {
   fillTrough: function addWaterToWaterWallsTrough(section) {
     let waterLevel = Math.min(section[0], section[section.length - 1]);
     return section.map( wallHeight => {
-      return { blocks: wallHeight, water: Math.min(0, waterLevel - wallHeight) };
+      return { blocks: wallHeight, water: Math.max(0, waterLevel - wallHeight) };
     });
   },
   
+  mapTroughs: function mapTroughsClimbingTowardsPeak(heights) {
+    let troughMap = [];
+    let leftWall = 0;
+    let rightWall = 1;
+    for (let i = 2; i < heights.length; i++) {
+      if (heights[i] >= heights[leftWall]) {
+        rightWall = i;
+        let mappedSection = this.fillTrough(heights.slice(leftWall, rightWall + 1));
+        troughMap = troughMap.concat(mappedSection);
+        leftWall = i;
+        rightWall = i + 1;
+      } else {
+        troughMap = troughMap.concat([{ blocks: heights[i], water: 0 }]);
+      }
+    }
+    return troughMap;
+  },
+
   findTroughs: function findTroughsClimbingTowardsPeak(heights) {
     let troughData = false;
     let leftWall = 0;
