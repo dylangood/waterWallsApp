@@ -25,7 +25,6 @@ module.exports = {
     { input: [2, 3, 2], output: false },
     { input: [2, 1, 3], output: [1, 3, 1] },
     { input: [2, 0, 3], output: [1, 3, 2] },
-    { input: [2, 1, 3], output: [1, 3, 1] },
     { input: [2, 3, 4, 3, 1, 2], output: [4, 6, 1] },
     { input: [2, 3, 4, 3, 1, 2, 1, 1, 1], output: [4, 6, 1] },
   ],
