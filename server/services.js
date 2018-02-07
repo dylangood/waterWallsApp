@@ -26,13 +26,12 @@ module.exports = {
       if (heights[i] >= heights[leftWall]) {
         rightWall = i;
         let mappedSection = this.fillTrough(heights.slice(leftWall, rightWall + 1));
-        troughMap = troughMap.concat(mappedSection);
+        troughMap = troughMap.concat(mappedSection.slice(0, -1));
         leftWall = i;
         rightWall = i + 1;
-      } else {
-        troughMap = troughMap.concat([{ blocks: heights[i], water: 0 }]);
       }
     }
+    troughMap.push({ blocks: heights[heights.length - 1], water: 0 });
     return troughMap;
   },
 
