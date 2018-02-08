@@ -34,6 +34,16 @@ router.get('/api/tests/mapTroughs/cases/:caseId', function(req, res) {
   }
 });
 
+router.get('/api/tests/mapAllTroughs/cases/:caseId', function(req, res) {
+  let checklist = test.checklist[req.params.caseId] ? test.checklist[req.params.caseId].input : undefined;
+  if (checklist) {
+    let troughMap = Services.mapAllTroughs(checklist);
+    res.send(troughMap);
+  } else {
+    res.status(404).send(`Test case #${req.params.caseId} is undefined.`);
+  }
+});
+
 router.post('/api/episodes', function(req, res) {
   const ep = JSON.parse(req.body.episode);
   const campaigns = JSON.parse(req.body.adCampaigns);
