@@ -52,12 +52,25 @@ module.exports = {
     return troughData;
   },
 
+  mapAllTroughs: function mapAllWaterWallsTroughs(heights) {
+
+    if (!heights.length) { return false; }
+
+    let peak = heights.indexOf(Math.max(...heights));
+    let west = heights.slice(0, peak + 1);
+    let east = heights.slice(peak).reverse();
+
+    let westMap = this.mapTroughs(west);
+    let eastMap = this.mapTroughs(east).reverse();
+
+    return westMap.slice(0, peak).concat(eastMap);
+  },
+
   largestTrough: function findLargestWaterWallsTrough(heights) {
     
     if (heights.length < 3) { return false; }
     
     let peak = heights.indexOf(Math.max(...heights));
-    
     let west = heights.slice(0, peak + 1);
     let east = heights.slice(peak).reverse();
     
