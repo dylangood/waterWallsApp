@@ -21,10 +21,9 @@ module.exports = {
   mapTroughs: function mapTroughsClimbingTowardsPeak(heights) {
     let troughMap = [];
     let leftWall = 0;
-    let rightWall = 1;
-    for (let i = 2; i < heights.length; i++) {
+    for (let i = 1; i < heights.length; i++) {
+      let rightWall = i;
       if (heights[i] >= heights[leftWall]) {
-        rightWall = i;
         let mappedSection = this.fillTrough(heights.slice(leftWall, rightWall + 1));
         troughMap = troughMap.concat(mappedSection.slice(0, -1));
         leftWall = i;
