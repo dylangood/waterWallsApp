@@ -23,7 +23,7 @@ export default class App extends React.Component {
         },
         {
           label: 'Water',
-          backgroundColor: 'cyan',
+          backgroundColor: 'rgba(0, 255, 255, 0.4)',
           data: this.props.water,
         },
       ]
