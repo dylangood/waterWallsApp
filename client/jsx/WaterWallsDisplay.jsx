@@ -35,10 +35,11 @@ export default class App extends React.Component {
       options: {
         scales: {
           xAxes: [{
-            stacked: true
+            stacked: true,
+            barPercentage: 1.0,
           }],
           yAxes: [{
-            stacked: true
+            stacked: true,
           }]
         }
       }
