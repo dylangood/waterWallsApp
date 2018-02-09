@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kyle-wilson/webpack-dev-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chart.js": "^2.7.1",
     "express": "^4.16.2"
   },
   "devDependencies": {
