@@ -6,8 +6,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      waterWallsData: [],
-      textEntry: ''
+      blocks: [],
+      water: [],
+      textEntry: '',
     };
     this.convertWWData = this.convertWWData.bind(this);
     this.updateTextEntry = this.updateTextEntry.bind(this);
@@ -24,7 +25,7 @@ export default class App extends React.Component {
     }).then( waterWallsData => {
       let blocks = waterWallsData.map( position => position.blocks );
       let water = waterWallsData.map( position => position.water );
-      this.setState({ waterWallsData: [blocks, water] });
+      this.setState({ blocks, water });
     });
   }
 
@@ -34,7 +35,7 @@ export default class App extends React.Component {
         <input onChange={this.updateTextEntry}></input>
         <button onClick={this.convertWWData}>Render Water Walls</button>
         <p></p>
-        <WaterWallsDisplay waterWallsData={this.state.waterWallsData} />
+        <WaterWallsDisplay blocks={this.state.blocks} water={this.state.water} />
       </div>
     );
   }
