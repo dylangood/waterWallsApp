@@ -5,7 +5,7 @@ App that solves &amp; visualizes various Water Walls-types of toy problems
 To get started, first just clone the repo & npm install.
 From there, you can use "npm start" to activate webpack for automated transpiling.
 Use "npm run server" to turn on the Node server & monitor for changes.
-To see what the app does, type a comma-separated list of integers into the <input>, then click the <button>.
+To see what the app does, type a comma-separated list of integers into the *input*, then click the *button*.
 
 ### I started from this React boilerplate:
 https://github.com/kyle-wilson/react-webpack-starter
