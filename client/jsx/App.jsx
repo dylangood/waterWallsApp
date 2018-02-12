@@ -21,11 +21,17 @@ export default class App extends React.Component {
   
   convertWWData() {
     let heights = this.state.textEntry.split(',').map( height => { return 1 * height.trim(); });
-    let str = JSON.stringify(heights);
-    console.log(str);
-    fetch(`http://localhost:1717/api/tests/mapAllTroughs/cases/${heights[0]}`).then(res => {
-      return res.json();
-    }).then( waterWallsData => {
+    let payload = {heights};
+    fetch('http://localhost:1717/api/mapAllTroughs', { 
+      method: 'POST',
+      mode: 'cors',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(payload),
+    }).then(res => res.json()
+    ).then( data => {
+      let waterWallsData = data.troughMap;
       let blocks = waterWallsData.map( position => position.blocks );
       let water = waterWallsData.map( position => position.water );
       this.setState({ blocks, water });
@@ -33,13 +39,14 @@ export default class App extends React.Component {
     });
     fetch('http://localhost:1717/api/largestTrough', { 
       method: 'POST',
-      body: { heights: str },
+      mode: 'cors',
       headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
-    }).then(res => {
-      return res.json();
-    }).then( largestTrough => {
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(payload),
+    }).then(res => res.json()
+    ).then( data => {
+      let largestTrough = data.largestTrough;
       this.setState({largestTrough});
     });
   }

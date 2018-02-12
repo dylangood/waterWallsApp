@@ -9,11 +9,6 @@ router.get('/', function(req, res) {
   res.send('/client/index.html');
 });
 
-router.get('/api/tests/fillEpisode', function(req, res) {
-  let targeted = Services.fillEpisodeWithAds(test.episode, test.campaigns);
-  res.send(targeted);
-});
-
 router.get('/api/tests/largestTrough/cases/:caseId', function(req, res) {
   let checklist = test.checklist[req.params.caseId] ? test.checklist[req.params.caseId].input : undefined;
   if (checklist) {
@@ -44,10 +39,16 @@ router.get('/api/tests/mapAllTroughs/cases/:caseId', function(req, res) {
   }
 });
 
-router.post('/api/episodes', function(req, res) {
-  const ep = JSON.parse(req.body.episode);
-  const campaigns = JSON.parse(req.body.adCampaigns);
-  let finishedEpisode = Services.fillEpisodeWithAds(ep, campaigns);
-  // Create database entry for /api/episodes/:id/audio
-  res.send(finishedEpisode);
+router.post('/api/mapAllTroughs', function(req, res) {
+  const body = req.body;
+  let troughMap = Services.mapAllTroughs(body.heights);
+  res.send({troughMap});
 });
+
+router.post('/api/largestTrough', function(req, res) {
+  const body = req.body;
+  let largestTrough = Services.largestTrough(body.heights);
+  res.send({largestTrough});
+});
+
+router.post('/api/mapAllTroughs');
