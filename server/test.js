@@ -1,18 +1,4 @@
 module.exports = {
-  
-  episode: { audio: '[PRE]++++++++[POST]', id: '892' },
-
-  campaigns: [
-    [
-      { audio: '*AcmeA*', type: 'PRE', targets: ['892'], revenue: 1 },
-    ],
-    [
-      { audio: '*TacoCat*', type: 'MID', targets: ['892'], revenue: 3 }
-    ],
-    [
-      { audio: '*CorpCorpA*', type: 'POST', targets: ['892'], revenue: 11 },
-    ]
-  ],
 
   checklist: [
     { input: [5, 3, 7, 2, 6, 4, 5, 9, 1, 2], output: [3, 8, 11] },
