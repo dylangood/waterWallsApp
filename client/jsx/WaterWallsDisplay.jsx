@@ -9,9 +9,13 @@ export default class App extends React.Component {
 
   render() {
     let blockColors = this.props.blocks.map( (block, i) => { 
-      return i === this.props.largestTrough[0] - 1 || i === this.props.largestTrough[1] - 1 
-      ? 'black' 
-      : 'rgba(100, 100, 100, 0.5)'; 
+      if (this.props.largestTrough) {
+        return i === this.props.largestTrough[0] - 1 || i === this.props.largestTrough[1] - 1 
+        ? 'black' 
+        : 'rgba(100, 100, 100, 0.5)'; 
+      } else {
+        return 'rgba(100, 100, 100, 0.5)';
+      }
     });
     let stackedBarChartData = {
       labels: new Array(this.props.blocks.length).fill(''),
